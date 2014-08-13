@@ -2,6 +2,7 @@
 *
 
 # except
+!*/
 !*.java
 !*.ctxt
 !*.txt
