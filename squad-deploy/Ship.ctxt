@@ -1,5 +1,14 @@
 #BlueJ class context
 comment0.params=
-comment0.target=void\ act()
-comment0.text=\n\ Act\ -\ do\ whatever\ the\ Ship\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=1
+comment0.target=Ship()
+comment1.params=
+comment1.target=void\ act()
+comment2.params=image\ factor
+comment2.target=greenfoot.GreenfootImage\ scaleImage(greenfoot.GreenfootImage,\ int)
+comment2.text=\n\ Scale\ image\ by\ a\ factor\n\ \n\ @param\ image\ the\ image\ to\ scale\n\ @param\ factor\ the\ amount\ to\ scale\ \!\=\ 0\n
+comment3.params=
+comment3.target=boolean\ withinRange()
+comment4.params=
+comment4.target=void\ keyInput()
+comment4.text=\n\ \n\ prevents\ oversteering\ can't\ turn\ more\ than\ 45\ deg\ up\ /\ down\ respectively\n
+numComments=5
