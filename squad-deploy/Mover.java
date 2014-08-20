@@ -9,11 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Mover extends Actor
 {
     /**
-     * Act - do whatever the Mover wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Scale image by a factor
+     * 
+     * @param image the image to scale
+     * @param factor the amount to scale != 0
      */
-    public void act() 
+    public GreenfootImage scaleImage(GreenfootImage image, int factor)
     {
-        // Add your action code here.
-    }    
+        int width = getImage().getWidth();
+        int height = getImage().getHeight();
+        image.scale(width / factor, height / factor);
+        return image;
+    }  
 }

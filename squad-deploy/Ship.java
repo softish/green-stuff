@@ -16,11 +16,17 @@ public class Ship extends Mover
     private String tilt;
     private boolean bottomTilt; // to replace the tilt String
     private boolean topTilt;
+    public boolean carrying;
+    private int carryOffsetX;
+    private int carryOffsetY;
     
     public Ship()
     {
         landed = false;
         tilt = "no";
+        carrying = false;
+        carryOffsetX = 29;
+        carryOffsetY = 12;
         speed = 3;
         getImage().mirrorHorizontally();
         scaleImage(getImage(), 3);
@@ -30,20 +36,15 @@ public class Ship extends Mover
     public void act() 
     {
         keyInput();
-    }
-    
-    /**
-     * Scale image by a factor
-     * 
-     * @param image the image to scale
-     * @param factor the amount to scale != 0
-     */
-    private GreenfootImage scaleImage(GreenfootImage image, int factor)
-    {
-        int width = getImage().getWidth();
-        int height = getImage().getHeight();
-        image.scale(width / factor, height / factor);
-        return image;
+//         if(!carrying)
+//         {
+//             spawnCarry();
+//         }
+        if(carrying)
+        {
+            carry();
+        }
+        
     }
     
     private boolean withinRange()
@@ -53,6 +54,98 @@ public class Ship extends Mover
             return true;
         }
         return false;
+    }
+    
+    /**
+     * Check if ship is touching ground
+     */
+    private boolean touchGround()
+    {
+        if(isTouching(Ground.class))
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    // must have that vector, one direction of ship one of movement
+    // decellerate, return angle to 0 deg and so on
+    
+    /**
+     * Makes automated landing sequence
+     */
+    private boolean landing()
+    {
+//         int i = 0;
+//         if(!touchGround())
+//         {
+//             while(i < (getWorld().getHeight() - 100))
+//             {
+//                 setLocation(getX(), getY()+i);
+//                 i++;
+//             }
+//         }
+        return false;
+    }
+    
+    private void land()
+    {
+        if(!touchGround())
+        {
+            setLocation(getX(), getY()+1);
+        }
+        else
+        {
+            landed = true;
+        }
+    }
+    
+    private void liftoff()
+    {
+        //if(touchGround())
+        if(getY() > (getWorld().getHeight() / 4)*3)
+        {
+            setLocation(getX(), getY()-1);
+            
+        }
+        else
+        {
+            landed = false;
+        }
+    }
+    
+    /**
+     * 
+     * @Param what to carry
+     */
+    private void spawnCarry() // Rename
+    {
+        getWorld().addObject(new Rover(), getX(), getY());
+        carrying = true;
+    }
+    
+    // makes goods follow
+    // TODO: follow ship tail aswell as the ship use an interect method and make pixels track??
+    // TODO: make carrying visible before "play is pressed", that is make level check the carrying var here
+    private void carry()
+    {
+        Rover rover = (Rover) getOneIntersectingObject(Rover.class);
+        rover.setLocation(getX() - carryOffsetX, getY() + carryOffsetY);
+        rover.setRotation(getRotation());
+    }
+    
+    private void detachGoods()
+    {
+        carrying = false;
+    }
+    
+    private void attachGoods()
+    {
+        if(isTouching(Rover.class))
+        {
+            carry();
+            carrying = true;
+        }
     }
     
     // NOGOOD: flies in some predefined directions...
@@ -93,9 +186,46 @@ public class Ship extends Mover
             }
         }
         
+        if(Greenfoot.isKeyDown("space"))
+        {
+            detachGoods();
+        }
+        
+        // have to press button again to change state...
         if(Greenfoot.isKeyDown("shift"))
         {
-            // land / liftoff
+            landing();
+        }
+        
+        if(Greenfoot.isKeyDown("e"))
+        {
+            //if(landed)
+            {
+                liftoff();
+            }
+        }
+        if(Greenfoot.isKeyDown("q"))
+        {
+            //if(!landed)
+            {
+                land();
+            }
+        }
+        
+        // DEV purpose
+        if(Greenfoot.isKeyDown("1"))
+        {
+            if(!carrying)
+            {
+                spawnCarry();
+            }
+        }
+        if(Greenfoot.isKeyDown("2"))
+        {
+            if(!carrying)
+            {
+                attachGoods();
+            }
         }
     }
 }
