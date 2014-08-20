@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Ship here.
+ * Ship is the main caracter, controlled by
+ * the player.
  * 
  * @author softhish
  * @version aug 2014
@@ -36,15 +37,11 @@ public class Ship extends Mover
     public void act() 
     {
         keyInput();
-//         if(!carrying)
-//         {
-//             spawnCarry();
-//         }
+
         if(carrying)
         {
-            carry();
+            bringAnlong();
         }
-        
     }
     
     private boolean withinRange()
@@ -68,9 +65,6 @@ public class Ship extends Mover
         return false;
     }
     
-    // must have that vector, one direction of ship one of movement
-    // decellerate, return angle to 0 deg and so on
-    
     /**
      * Makes automated landing sequence
      */
@@ -88,6 +82,10 @@ public class Ship extends Mover
         return false;
     }
     
+    
+    /**
+     * Hover downwards
+     */
     private void land()
     {
         if(!touchGround())
@@ -100,10 +98,13 @@ public class Ship extends Mover
         }
     }
     
+    /**
+     * Hoover upwards
+     */
     private void liftoff()
     {
         //if(touchGround())
-        if(getY() > (getWorld().getHeight() / 4)*3)
+        if(getY() > 50)//new Ship().getImage().getHeight()/ 2)//(getWorld().getHeight() / 4)*3)
         {
             setLocation(getX(), getY()-1);
             
@@ -116,22 +117,23 @@ public class Ship extends Mover
     
     /**
      * 
-     * @Param what to carry
+     * @Param vehicle what to carry /// better to have other datatype???
      */
-    private void spawnCarry() // Rename
+    private void spawnCarry(Actor vehicle) // Rename
     {
-        getWorld().addObject(new Rover(), getX(), getY());
+        getWorld().addObject(vehicle, getX(), getY());
         carrying = true;
     }
     
     // makes goods follow
     // TODO: follow ship tail aswell as the ship use an interect method and make pixels track??
     // TODO: make carrying visible before "play is pressed", that is make level check the carrying var here
-    private void carry()
+    private void bringAnlong()
     {
-        Rover rover = (Rover) getOneIntersectingObject(Rover.class);
-        rover.setLocation(getX() - carryOffsetX, getY() + carryOffsetY);
-        rover.setRotation(getRotation());
+        //Rover rover = (Rover) getOneIntersectingObject(Rover.class);
+        Actor vehicle = (Mover) getOneIntersectingObject(Mover.class);
+        vehicle.setLocation(getX() - carryOffsetX, getY() + carryOffsetY);
+        vehicle.setRotation(getRotation());
     }
     
     private void detachGoods()
@@ -143,7 +145,7 @@ public class Ship extends Mover
     {
         if(isTouching(Rover.class))
         {
-            carry();
+            bringAnlong();
             carrying = true;
         }
     }
@@ -217,10 +219,17 @@ public class Ship extends Mover
         {
             if(!carrying)
             {
-                spawnCarry();
+                spawnCarry(new Rover());
             }
         }
         if(Greenfoot.isKeyDown("2"))
+        {
+            if(!carrying)
+            {
+                spawnCarry(new Tank());
+            }
+        }
+        if(Greenfoot.isKeyDown("tab"))
         {
             if(!carrying)
             {

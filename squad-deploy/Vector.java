@@ -1,8 +1,8 @@
 /**
  * Write a description of class Vector here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author softhish
+ * @version aug 2014
  */
 public class Vector  
 {
