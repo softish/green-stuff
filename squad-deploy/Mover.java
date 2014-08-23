@@ -14,11 +14,10 @@ public class Mover extends Actor
      * @param image the image to scale
      * @param factor the amount to scale != 0
      */
-    public GreenfootImage scaleImage(GreenfootImage image, int factor)
+    public void scaleImage(GreenfootImage image, int factor)
     {
         int width = getImage().getWidth();
         int height = getImage().getHeight();
         image.scale(width / factor, height / factor);
-        return image;
     }
 }

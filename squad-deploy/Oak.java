@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Oack here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author softhish
+ * @version aug 2014
  */
 public class Oak extends Tree
 {
@@ -22,6 +22,5 @@ public class Oak extends Tree
         {
             getImage().mirrorHorizontally();
         }
-        
     }
 }

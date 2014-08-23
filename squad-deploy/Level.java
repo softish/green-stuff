@@ -18,14 +18,19 @@ public class Level extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1);
         
-        setPaintOrder(Oak.class, Ship.class);
+        setPaintOrder(Oak.class, LandingGear.class, Ship.class);
         
+        //Dem duplication :S
         addObject(new Ship(), new Ship().getImage().getWidth() / 2, getHeight() / 2);
+        addObject(new LandingGear(), new LandingGear().getImage().getWidth() / 2, getHeight() / 2);
         // NOGOOD: is there a better way than using "new" again
-        drawGround();
+        
         drawEnvironment();
     }
     
+    /**
+     * Self explanatory
+     */
     public void drawGround()
     {
         int blockWidth = new Ground().getImage().getWidth();
@@ -35,8 +40,13 @@ public class Level extends World
         }
     }
     
+    /**
+     * Makes up the level
+     */
     public void drawEnvironment()
     {
+        drawGround();
+        
         addObject(new Oak(false, 9), 239, 491);
         addObject(new Birch(false, 10), 500, 514);
         addObject(new Birch(false, 10), 570, 514);

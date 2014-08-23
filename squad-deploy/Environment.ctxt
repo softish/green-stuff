@@ -2,4 +2,6 @@
 comment0.params=image\ factor
 comment0.target=greenfoot.GreenfootImage\ scaleImage(greenfoot.GreenfootImage,\ int)
 comment0.text=\n\ Scale\ image\ by\ a\ factor\n\ \n\ @param\ image\ the\ image\ to\ scale\n\ @param\ factor\ the\ amount\ to\ scale\ \!\=\ 0\n
-numComments=1
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+numComments=2
