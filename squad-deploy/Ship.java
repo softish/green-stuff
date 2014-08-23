@@ -98,7 +98,6 @@ public class Ship extends Mover
         return false;
     }
     
-    
     /**
      * Hover downwards
      */
