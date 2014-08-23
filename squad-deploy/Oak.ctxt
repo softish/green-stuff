@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=mirror\ size
+comment0.target=Oak(boolean,\ int)
+comment0.text=\n\ Defining\ Tree\ properties\n\ \n\ @param\ mirror\ if\ true,\ flip\ else\ not\n\ @param\ size\ is\ how\ much\ to\ scale\ down\ original\ image\n
+numComments=1

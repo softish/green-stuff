@@ -1,0 +1,5 @@
+1.Handler for scale, have a database/list of heights, make them proportional?
+
+2.Tree is one class with name as parameter, scale already taken care of inside class
+
+3.Controlled printing, some trees in front of ship, some behind, ATM conflicting with 2.
