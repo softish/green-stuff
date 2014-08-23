@@ -18,12 +18,10 @@
 
 10.animate motors
 
-11.altimeter to base some functionality off (like landing gear) or when it's fasible to drop goods
+11.altimeter to base some functionality off (like landing gear) or when it's fasible to drop goodsm
 
 12.drop weapons in barrels :)
 
 13.fix rotation of vehicle when ship is rotating(+make follow)
-
-**14.can't mirror LandingGear if extending ship!? notanymore
 
 
