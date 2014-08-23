@@ -13,6 +13,6 @@ public class Rock extends Environment
      */
     public Rock()
     {
-        scaleImage(getImage(), 4);
+        scaleImage(getImage(), Greenfoot.getRandomNumber(15)+7);
     }
 }

@@ -1,5 +1,4 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Tree()
-comment0.text=\n\ Defining\ Tree\ properties\n
+comment0.params=mirror
+comment0.target=void\ mirror(boolean)
 numComments=1

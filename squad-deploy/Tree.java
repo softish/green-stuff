@@ -3,16 +3,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Tree here.
  * 
- * @author softhish
- * @version aug 2014
+ * @author (your name) 
+ * @version (a version number or a date)
  */
 public class Tree extends Environment
 {
-    /**
-     * Defining Tree properties
-     */
-    public Tree()
+    public void mirror(boolean mirror)  
     {
-        scaleImage(getImage(), 3);
+        
     }
 }
