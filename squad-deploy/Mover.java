@@ -20,5 +20,5 @@ public class Mover extends Actor
         int height = getImage().getHeight();
         image.scale(width / factor, height / factor);
         return image;
-    }  
+    }
 }

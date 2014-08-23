@@ -3,3 +3,13 @@
 2.Tree is one class with name as parameter, scale already taken care of inside class
 
 3.Controlled printing, some trees in front of ship, some behind, ATM conflicting with 2.
+
+4. not be able to "rotate/steer" ship into the ground...
+
+5.multiple instances of ship, only controlling one (l8game)
+
+6.smooth mover
+
+7.flipMover() in Mover.class
+
+
