@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=LandingGear()
+comment0.text=\n\ Creates\ front\ and\ back\ landing\ gear\ of\ player's\ ship\n\ \n\ @param\ up\ if\ the\ gear\ is\ deactivated\ or\ not\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=x\ y
+comment2.target=void\ followShip(int,\ int)
+comment2.text=\n\ Follows\ the\ ship\n
+comment3.params=
+comment3.target=void\ lowerLandingGear()
+comment3.text=\n\ Inverts\ state\ of\ landing\ gear\n
+numComments=4

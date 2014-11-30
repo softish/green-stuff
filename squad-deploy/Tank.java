@@ -3,14 +3,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Tank here.
  * 
+<<<<<<< HEAD
  * @author softhish
  * @version aug 2014
  */
-public class Tank extends Mover
+
+public class Tank extends Team
 {
     public Tank()
     {
-        scaleImage(getImage(), 2);
+        scaleImage(getImage(), 3);
     }
     
     /**

@@ -1,0 +1,27 @@
+1.Handler for scale, have a database/list of heights, make them proportional?
+
+2.Tree is one class with name as parameter, scale already taken care of inside class
+
+3.Controlled printing, some trees in front of ship, some behind, ATM conflicting with 2.
+
+4. not be able to "rotate/steer" ship into the ground...
+
+5.multiple instances of ship, only controlling one (l8game)
+
+6.smooth mover
+
+7.flipMover() in Mover.class
+
+8.spawn wiht or without goods
+
+9.landing gear
+
+10.animate motors
+
+11.altimeter to base some functionality off (like landing gear) or when it's fasible to drop goodsm
+
+12.drop weapons in barrels :)
+
+13.fix rotation of vehicle when ship is rotating(+make follow)
+
+

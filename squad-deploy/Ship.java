@@ -20,6 +20,8 @@ public class Ship extends Mover
     public boolean carrying;
     private int carryOffsetX;
     private int carryOffsetY;
+    private LandingGear gear;
+    private boolean once = false;
     
     public Ship()
     {
@@ -32,19 +34,33 @@ public class Ship extends Mover
         getImage().mirrorHorizontally();
         scaleImage(getImage(), 3);
     }
-
+    
     @Override
     public void act() 
     {
         keyInput();
-
+        // this sight...
+        // replace with other collision detection!
+        if(!once)
+        {
+            gear = (LandingGear) getOneIntersectingObject(LandingGear.class);
+            once = true;
+        }
+        
+        gear.followShip(getX(), getY());
+        
         if(carrying)
         {
             bringAnlong();
         }
     }
     
-    private boolean withinRange()
+    /**
+     * Makes sure ship cannot pich or yaw too much
+     * 
+     * @return if it is within range
+     */
+    private boolean withinSteeringRange()
     {
         if(getRotation() > maxAngle || getRotation() < minAngle)
         {
@@ -81,7 +97,6 @@ public class Ship extends Mover
 //         }
         return false;
     }
-    
     
     /**
      * Hover downwards
@@ -131,9 +146,9 @@ public class Ship extends Mover
     private void bringAnlong()
     {
         //Rover rover = (Rover) getOneIntersectingObject(Rover.class);
-        Actor vehicle = (Mover) getOneIntersectingObject(Mover.class);
+        Actor vehicle = (Team) getOneIntersectingObject(Team.class);
         vehicle.setLocation(getX() - carryOffsetX, getY() + carryOffsetY);
-        vehicle.setRotation(getRotation());
+        //vehicle.setRotation(getRotation());
     }
     
     private void detachGoods()
@@ -141,9 +156,12 @@ public class Ship extends Mover
         carrying = false;
     }
     
+    /**
+     * 
+     */
     private void attachGoods()
     {
-        if(isTouching(Rover.class))
+        if(isTouching(Mover.class))
         {
             bringAnlong();
             carrying = true;
@@ -163,7 +181,7 @@ public class Ship extends Mover
         }
         if(Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s"))
         {
-            if(withinRange() || tilt.equals("up"))
+            if(withinSteeringRange() || tilt.equals("up"))
             {
                 turn(1);
                 if(getRotation() == 45)
@@ -178,7 +196,7 @@ public class Ship extends Mover
         }
         if(Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w"))
         {
-            if(withinRange() || tilt.equals("down"))
+            if(withinSteeringRange() || tilt.equals("down"))
             {
                 turn(-1);
                 if(getRotation() == 315)
@@ -214,6 +232,10 @@ public class Ship extends Mover
             }
         }
         
+        if(Greenfoot.isKeyDown("3"))
+        {
+            gear.lowerLandingGear();
+        }
         // DEV purpose
         if(Greenfoot.isKeyDown("1"))
         {
@@ -229,7 +251,8 @@ public class Ship extends Mover
                 spawnCarry(new Tank());
             }
         }
-        if(Greenfoot.isKeyDown("tab"))
+        // tab not working on sturmovic keyboard
+        if(Greenfoot.isKeyDown("control"))// space is better button!!!
         {
             if(!carrying)
             {

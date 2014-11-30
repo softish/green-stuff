@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author softhish
  * @version aug 2014
  */
-public class Rover extends Mover
+public class Rover extends Team
 {
     public Rover()
     {
